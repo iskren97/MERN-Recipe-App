@@ -1,5 +1,12 @@
 import React from 'react';
+import Login from '../components/Login';
+import Register from '../components/Register';
 
 export const Auth = () => {
-  return <div>Auth</div>;
+  return (
+    <>
+      <Login />
+      <Register />
+    </>
+  );
 };
