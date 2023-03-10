@@ -7,17 +7,21 @@ const router = express.Router();
 
 router.post('/register', async (req, res) => {
   const { username, password } = req.body;
-  const user = await UserModel.findOne({ username });
 
-  if (user) {
-    return res.status(422).send({ message: 'User already exists' });
+  try {
+    const user = await UserModel.findOne({ username });
+    if (user) {
+      throw new Error('User already exists');
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 8);
+    const newUser = new UserModel({ username, password: hashedPassword });
+    await newUser.save();
+
+    res.status(201).send(newUser);
+  } catch (error) {
+    res.status(500).send({ error: error.message });
   }
-
-  const hashedPassword = await bcrypt.hash(password, 8);
-  const newUser = new UserModel({ username, password: hashedPassword });
-  await newUser.save();
-
-  res.status(201).send({ message: 'User successfully registered' });
 });
 
 router.post('/login', async (req, res) => {
