@@ -8,6 +8,7 @@ const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
+  // eslint-disable-next-line no-unused-vars
   const [_, setCookies] = useCookies(['access_token']);
 
   const navigate = useNavigate();
