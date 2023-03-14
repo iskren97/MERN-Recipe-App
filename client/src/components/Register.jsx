@@ -21,7 +21,6 @@ const Register = () => {
       alert('Registration completed!');
     } catch (error) {
       console.log(error);
-      console.log('as');
     }
   };
 
