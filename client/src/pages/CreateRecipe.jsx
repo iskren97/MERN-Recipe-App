@@ -10,7 +10,9 @@ const CreateRecipe = () => {
   const [recipe, setRecipe] = useState({
     name: '',
     ingredients: [],
-    imageUrl: 'alt',
+    instructions: '',
+    imgUrl: '',
+    cookingTime: 0,
     userOwner: userID,
   });
 
@@ -66,6 +68,26 @@ const CreateRecipe = () => {
         <button onClick={addIngredient} type="button">
           Add Ingredient
         </button>
+
+        <label htmlFor="instructions">Instructions</label>
+        <textarea
+          name="instructions"
+          id=""
+          cols="30"
+          rows="5"
+          onChange={handleChange}
+        ></textarea>
+
+        <label htmlFor="imgUrl">Image URL</label>
+        <input type="text" id="imgUrl" name="imgUrl" onChange={handleChange} />
+
+        <label htmlFor="cookingTime">Cooking Time (minutes)</label>
+        <input
+          type="number"
+          id="cookingTime"
+          name="cookingTime"
+          onChange={handleChange}
+        />
 
         <button type="Submit">Create Recipe</button>
       </form>
