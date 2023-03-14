@@ -10,7 +10,7 @@ const Form = ({
 }) => {
   return (
     <>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={onSubmit} className="simple-form">
         <h2>{label}</h2>
 
         <label htmlFor="username">Username</label>

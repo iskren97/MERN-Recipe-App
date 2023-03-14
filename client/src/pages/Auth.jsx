@@ -5,8 +5,11 @@ import Register from '../components/Register';
 export const Auth = () => {
   return (
     <>
-      <Login />
-      <Register />
+      <h1 className="auth-heading">Auth</h1>
+      <div className="auth-container">
+        <Login />
+        <Register />
+      </div>
     </>
   );
 };

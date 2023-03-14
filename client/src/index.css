@@ -45,7 +45,9 @@ code {
   align-items: center;
 }
 
-.home-page-heading {
+.home-page-heading,
+.create-recipe-heading,
+.auth-heading {
   text-align-last: left;
   margin-left: 50px;
 }
@@ -70,4 +72,40 @@ code {
 .save-recipe-btn:hover {
   font-size: 20px;
   transition: font-size 0.25s;
+}
+
+.auth-container,
+.create-recipe-container {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.simple-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 30px 40px;
+  width: 300px;
+  color: white;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+.simple-form input {
+  padding: 5px 40px 5px 40px;
+}
+.simple-form label {
+  font-weight: lighter;
+}
+
+.simple-form button {
+  border: none;
+  padding: 10px 25px 15px 25px;
+  border-radius: 50px;
+  cursor: pointer;
+  margin-top: 25px;
 }
