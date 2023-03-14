@@ -1,5 +1,5 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const Home = () => {
   const [recipes, setRecipes] = useState([]);
@@ -17,15 +17,15 @@ const Home = () => {
   }, []);
 
   return (
-    <>
-      <h1>Recipes</h1>
+    <div className="home-page">
+      <h1 className="home-page-heading">Recipes</h1>
 
       <ul>
         {recipes.map((recipe) => (
-          <li key={recipe._id}>
+          <div key={recipe._id} className="recipe-container">
             <div>
-              <h3>{recipe.name}</h3>
-              <button>Save</button>
+              <h1>{recipe.name}</h1>
+              <button className="save-recipe-btn">Save</button>
             </div>
 
             <div>
@@ -35,12 +35,14 @@ const Home = () => {
             <img
               src={recipe.imgUrl}
               alt=""
-              style={{ height: '220px', width: '200px', objectFit: 'cover' }}
+              style={{ height: '250px', width: '400px', objectFit: 'cover' }}
             />
-          </li>
+
+            <p>Cooking Time: {recipe.cookingTime} minutes</p>
+          </div>
         ))}
       </ul>
-    </>
+    </div>
   );
 };
 

@@ -14,12 +14,10 @@ code {
 
 .navbar {
   display: flex;
-  justify-content: space-between;
-  gap: 10px;
   justify-content: center;
-  align-items: center;
-  background-color: black;
+  gap: 20px;
   padding: 20px;
+  background-color: black;
 }
 
 .navbar a {
@@ -27,6 +25,10 @@ code {
   color: white;
   font-size: 20px;
   padding: 15px;
+}
+
+.navbar a:hover {
+  text-decoration: underline;
 }
 
 .navbar button {
@@ -39,5 +41,33 @@ code {
 }
 
 .home-page {
-  text-align: center;
+  text-align: -webkit-center;
+  align-items: center;
+}
+
+.home-page-heading {
+  text-align-last: left;
+  margin-left: 50px;
+}
+
+.recipe-container {
+  display: flex;
+  flex-direction: column;
+  width: 650px;
+  align-items: center;
+  border: 1px solid;
+  margin-bottom: 40px;
+}
+
+.save-recipe-btn {
+  border: none;
+  font-size: 15px;
+  padding: 10px 25px 15px 25px;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.save-recipe-btn:hover {
+  font-size: 20px;
+  transition: font-size 0.25s;
 }
