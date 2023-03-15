@@ -42,9 +42,10 @@ router.put('/', async (req, res) => {
   }
 });
 
-router.get('/savedRecipes/ids', async (req, res) => {
+router.get('/savedRecipes/ids/:userID', async (req, res) => {
+  console.log(req.params.userID);
   try {
-    const user = await UserModel.findById(req.body.userID);
+    const user = await UserModel.findById(req.params.userID);
     res.send({ savedRecipes: user?.savedRecipes });
   } catch (error) {
     res.send(error);
