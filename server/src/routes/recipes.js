@@ -1,4 +1,5 @@
 import express from 'express';
+import { auth } from '../middleware/auth.js';
 import RecipeModel from '../models/Recipes.js';
 import UserModel from '../models/Users.js';
 
@@ -18,7 +19,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.post('/create', async (req, res) => {
+router.post('/create', auth, async (req, res) => {
   try {
     const recipe = new RecipeModel(req.body);
 
@@ -29,7 +30,7 @@ router.post('/create', async (req, res) => {
   }
 });
 
-router.put('/', async (req, res) => {
+router.put('/', auth, async (req, res) => {
   try {
     const recipe = await RecipeModel.findById(req.body.recipeID);
     const user = await UserModel.findById(req.body.userID);

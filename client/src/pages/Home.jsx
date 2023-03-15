@@ -1,12 +1,14 @@
 /* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import axios from 'axios';
 import { useGetUserID } from '../hooks/useGetUserID';
+import { useCookies } from 'react-cookie';
 
 const Home = () => {
   const [recipes, setRecipes] = useState([]);
   const [savedRecipes, setSavedRecipes] = useState([]);
   const userID = useGetUserID();
+  const [cookies, _] = useCookies(['access_token']);
 
   useEffect(() => {
     const fetchRecipes = async () => {
@@ -31,22 +33,34 @@ const Home = () => {
 
     fetchRecipes();
     fetchSavedRecipes();
-  }, [userID]);
+  }, [userID, savedRecipes]);
 
   const saveRecipe = async (recipeID) => {
     try {
-      const response = await axios.put('http://localhost:3002/recipes', {
-        recipeID,
-        userID,
-      });
+      const response = await axios.put(
+        'http://localhost:3002/recipes',
+        {
+          recipeID,
+          userID,
+        },
+        {
+          headers: {
+            authorization: cookies.access_token,
+          },
+        }
+      );
       setSavedRecipes(response.data.savedRecipes);
-      console.log(response);
     } catch (error) {
       console.log(error);
     }
   };
 
-  const isRecipeSaved = (recipeID) => savedRecipes?.includes(recipeID);
+  const isRecipeSaved = useCallback(
+    (recipeID) => {
+      return savedRecipes?.includes(recipeID);
+    },
+    [savedRecipes]
+  );
 
   return (
     <div className="home-page">
